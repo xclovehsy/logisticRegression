@@ -23,11 +23,12 @@ df.columns = ["花萼长", "花萼宽", "花瓣长", "花瓣宽", "品种"]
 print(df)
 
 # 训练集和测试集切分
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=0)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0)
 
 # 训练模型
 lm = LogisticModel()
-theta_list, cost_list = lm.multi_train(x_train, y_train, 0.01, 2000)
+# 0.1 5000 达到100%
+theta_list, cost_list = lm.multi_train(x_train, y_train, 0.1, 5000)
 print(f"theta_list={theta_list}\ncost_list={cost_list}")
 
 # 模型准确性分析

@@ -53,7 +53,7 @@ class LogisticModel:
 
     def predict(self, x, theta):
         """
-        模型预测
+        二分类模型预测
         :param x: 特征向量
         :param theta: 参数
         :return:
@@ -70,7 +70,7 @@ class LogisticModel:
 
     def sigmoid(self, x):
         """
-
+        定义sigmoid函数
         :param x:
         :return:
         """
@@ -86,16 +86,15 @@ class LogisticModel:
         num_predict, num_feature = x.shape
         X = np.append(np.ones((num_predict, 1)), x, axis=1)
 
-        Y_predict = self.predict(X, theta_list[0])
+        Y_predict = self.h_theta(X, theta_list[0])
         y_predict = np.ones((num_predict, 1))
         for theta in theta_list[1:]:
-            Y_predict = np.append(Y_predict, self.predict(X, theta), axis=1)
+            Y_predict = np.append(Y_predict, self.h_theta(X, theta), axis=1)
+
+        # print(Y_predict)
 
         for i in range(num_predict):
-            for j in range(Y_predict.shape[1]):
-                if Y_predict[i, j] == 1:
-                    y_predict[i] = j
-                    break
+            y_predict[i] = np.argmax(Y_predict[i, :])
         return y_predict
 
 
@@ -113,9 +112,6 @@ class LogisticModel:
         num_sort = len(sort_list)
         num_train, num_feature = x.shape
 
-        # 拼接特征向量以及标签向量
-        X = np.append(np.ones((num_train, 1)), x, axis=1)
-
         theta_list = []
         cost_list = []
         for i in range(num_sort):
@@ -129,7 +125,7 @@ class LogisticModel:
             Y[Y == -1] = 0
 
             # 存储参数
-            theta, costs = self.train(X, Y, alpha, epochs)
+            theta, costs = self.train(x, Y, alpha, epochs)
             theta_list.append(theta)
             cost_list.append(costs[-1])
 

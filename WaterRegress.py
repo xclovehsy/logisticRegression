@@ -40,7 +40,7 @@ plt.xlabel("密度")
 plt.ylabel("含糖率")
 plt.legend()
 plt.grid()
-plt.show()
+# plt.show()
 
 
 # 获取训练集和测试集
@@ -49,7 +49,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_
 # 训练模型
 lm = LogisticModel()
 # theta, cost_list = lm.train(x_train, y_train, 0.05, 1000)
-theta, cost_list = lm.train(x, y, 0.01, 2000)
+theta, cost_list = lm.train(x, y, 0.01, 5000)
 
 # 模型评估
 print(f"params = {theta}")
