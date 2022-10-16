@@ -14,7 +14,7 @@ logistic回归是一种常用的处理二分类问题的模型。
 
 二分类问题中，把结果y分成两个类，正类和负类。因变量y∈{0, 1}，0是负类，1是正类。线性回归$f(x)=\theta^Tx$的输出值在负无穷到正无穷的范围上，并不好区分是正类还是负类。因此引入非线性变换，把线性回归的输出值压缩到（0, 1）之间，那就成了Logistic回归$h_\theta(x)$，使得$h_\theta(x)$≥0.5时，预测y=1，而当$h_\theta(x)$<0.5时，预测y=0。
 
-![img](C:/Users/xc/Desktop/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/lab1/202210162032619.png)
+![img](https://xc-figure.oss-cn-hangzhou.aliyuncs.com/img/202210170027589.png)
 
 逻辑回归的定义式：
 $h_\theta(x)=g(\theta^Tx)$，x代表样本的特征向量。
@@ -23,7 +23,7 @@ $h_\theta(x)=g(\theta^Tx)$，x代表样本的特征向量。
 
 $g(x)=\frac{1}{1+e^{-z}}$为sigmoid函数，
 
-![img](C:/Users/xc/Desktop/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/lab1/202210162036117.png)
+![img](https://xc-figure.oss-cn-hangzhou.aliyuncs.com/img/202210170027947.png)
 
 $h_\theta(x)$可以理解为预测为正类的概率，即后验概率$h_\theta(x)=p(y=1|x;\theta)$，的取值范围是(0, 1)。
 
